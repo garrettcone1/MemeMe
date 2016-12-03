@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //Buttons & ImageView
     @IBOutlet weak var pickedImageDisplay: UIImageView!
     @IBOutlet weak var albumButton: UIBarButtonItem!
@@ -131,7 +131,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     // Clear text when starting to edit
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
+        
+        (textField.text == "TOP" || textField.text == "BOTTOM") ? (textField.text = "") : Void()
     }
     
     // Hide the keyboard when "Return" is clicked
@@ -140,22 +141,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         return true
     }
     
-    @IBAction func pickMyImage(_ sender: Any) {
-        
+    // To prevent repetitive code for pickMyImage & pickImageFromCamera, create one func that does it all with the sourceType as the input
+    func pick(sourceType: UIImagePickerControllerSourceType) {
         let imagePickerAction = UIImagePickerController()
         imagePickerAction.delegate = self
-        imagePickerAction.sourceType = .photoLibrary
+        imagePickerAction.sourceType = sourceType
         self.present(imagePickerAction, animated: true, completion: nil)
-        
-        
+    }
+    
+    @IBAction func pickMyImage(_ sender: Any) {
+        pick(sourceType: .photoLibrary)
     }
     
     @IBAction func pickImageFromCamera(_ sender: Any) {
-        
-        let imagePickerAction = UIImagePickerController()
-        imagePickerAction.delegate = self
-        imagePickerAction.sourceType = .camera
-        self.present(imagePickerAction, animated: true, completion: nil)
+        pick(sourceType: .camera)
     }
     
     @IBAction func shareButton(_ sender: Any) {
@@ -179,14 +178,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         if let image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage {
             
             pickedImageDisplay.image = image
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     
     // If nothing is selected and clicked cancel, then we can exit the image picker
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     
