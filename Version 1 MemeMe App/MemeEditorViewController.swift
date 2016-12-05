@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  Version 1 MemeMe App
 //
 //  Created by Garrett Cone on 11/17/16.
@@ -99,10 +99,10 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     struct Meme {
         
-        var topText: String?
-        var bottomText: String?
-        var originalImage: UIImage?
-        var saveMemedImage: UIImage?
+        let topText: String?
+        let bottomText: String?
+        let originalImage: UIImage?
+        let saveMemedImage: UIImage?
     }
     
     func generateMemedImage() -> UIImage {
