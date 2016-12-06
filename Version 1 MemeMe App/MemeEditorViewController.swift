@@ -38,16 +38,12 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         setTheTextFields(topTextField)
         setTheTextFields(bottomTextField)
     }
-    
-    
-    
+
     // Sign up to be notified when the keyboard appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -188,9 +184,6 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-    
-
-
 }//End of class
 
 
