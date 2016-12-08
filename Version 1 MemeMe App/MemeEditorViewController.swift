@@ -92,15 +92,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
-    
-    struct Meme {
         
-        let topText: String?
-        let bottomText: String?
-        let originalImage: UIImage?
-        let saveMemedImage: UIImage?
-    }
-    
     func generateMemedImage() -> UIImage {
         
         // Hide toolbar and navigationbar
@@ -122,7 +114,12 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func save() {
         // Create the meme
-        _ = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: pickedImageDisplay.image!, saveMemedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: pickedImageDisplay.image!, saveMemedImage: generateMemedImage())
+        
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     // Clear text when starting to edit
@@ -184,7 +181,7 @@ class MemeEditorViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
-}//End of class
+} //End of class
 
 
 
