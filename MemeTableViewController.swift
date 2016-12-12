@@ -18,8 +18,13 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func addAMeme(_ sender: Any) {
         
-        let memeEditorController = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.present(memeEditorController, animated: true, completion: nil)
+        let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        present(memeEditor, animated: true, completion: nil)
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     

@@ -35,7 +35,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
         
         // Set the name and image
         //cell.nameLabel.text = meme.name
-        cell.memeImageView?.image = UIImage(named: collectionMeme.topText! + collectionMeme.bottomText!)
+        cell.memeImageView?.image = collectionMeme.saveMemedImage
         
         return cell
         
