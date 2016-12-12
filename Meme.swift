@@ -15,4 +15,5 @@ struct Meme {
     let bottomText: String?
     let originalImage: UIImage?
     let saveMemedImage: UIImage?
+    
 }
