@@ -16,6 +16,10 @@ class MemeDetailViewController: UIViewController {
     // Outlets
     @IBOutlet weak var memeImageView: UIImageView!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.memeImageView!.image = meme.saveMemedImage
+    }
     
 }

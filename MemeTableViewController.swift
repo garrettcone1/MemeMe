@@ -11,9 +11,7 @@ import UIKit
 
 class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var allMemes: [Meme] {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
+    var allMemes: [Meme]!
     
     
     @IBAction func addAMeme(_ sender: Any) {
@@ -25,6 +23,10 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        allMemes = applicationDelegate.memes
+        
         
     }
     
@@ -53,7 +55,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "VillainDetailViewController") as! MemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = self.allMemes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(detailController, animated: true)
     }
