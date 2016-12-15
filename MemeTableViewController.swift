@@ -45,9 +45,9 @@ class MemeTableViewController: UITableViewController {
         
         let tableMeme = self.allMemes[(indexPath as NSIndexPath).row]
         
-        // Set the image
+        // Set the image and label
         table.imageView?.image = tableMeme.saveMemedImage
-        
+        table.textLabel?.text = tableMeme.topText! + " " + tableMeme.bottomText!
         return table
         
     }
