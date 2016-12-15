@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MemeTableViewController: UITableViewController {
     
     var allMemes: [Meme]!
-    
     
     @IBAction func addAMeme(_ sender: Any) {
         
@@ -24,29 +23,23 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        allMemes = applicationDelegate.memes
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        allMemes = applicationDelegate.memes
+        self.tableView.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.allMemes.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let table = tableView.dequeueReusableCell(withIdentifier: "MemeCell")!
         
@@ -59,7 +52,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailController.meme = self.allMemes[(indexPath as NSIndexPath).row]
