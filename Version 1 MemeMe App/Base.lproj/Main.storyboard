@@ -173,7 +173,7 @@
         <scene sceneID="Qud-v4-wWR">
             <objects>
                 <collectionViewController title="MemeCollectionViewController" id="rwx-YF-kGy" customClass="SentMemeCollectionViewController" customModule="Version_1_MemeMe_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="DJu-H9-85s">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DJu-H9-85s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
